@@ -65,6 +65,7 @@
     /* initialize the map */
     function initializeMap() {
       // library with map options
+      var mapOptions;
       var mapOptions = mapLib.MAP_OPTIONS;
       map = new google.maps.Map(document.getElementById('map'), mapOptions);
       infowindow = new google.maps.InfoWindow();
@@ -73,7 +74,7 @@
     * Initialize the app once the DOM and the Google Maps API is
     * successfully loaded. If not, display an error.
     */
-    if( typeof google === 'object'
+    if(  typeof google === 'object'
       && typeof google.maps === 'object'
       && typeof google.maps.event === 'object'
       && typeof google.maps.places === 'object') {
@@ -82,9 +83,15 @@
         google.maps.event.addDomListener(window, 'load', initializeMap() );
 
     } else {
-        console.log('The map could not be loaded. Please reload the page.');
         $('#spinner').show();
-        self.errorMessage('Can not load the map. Please reload the page.');
+        /**
+        * For some reason I dont understand, error function I created,
+        * doest not show when google map link on the view is deactivated.
+        * other than that, this function is doing its job. As an alternative,
+        * I output an alert message, which is also visible to the user.
+        */
+        alert('Error: There was a problem with Google Mpas. Please reload the page.');
+        self.errorMessage('The map could not be loaded. Please reload the page.');
         self.errorClass('error-message');
     }
 
@@ -123,8 +130,10 @@
     }
 
 
-    // remove markers of popular places from the map
-    // this method is called when neighborhood is newly defined
+    /**
+    * remove markers of popular places from the map
+    * this method is called when neighborhood is newly defined
+    */
     function removeVenueMarkers() {
       for (var i in self.venueMarkers()) {
         self.venueMarkers()[i].marker.setMap(null);
@@ -672,7 +681,9 @@
             // and fit the markers according to the space
             bounds.extend (self.venueMarkers()[i].marker.position);
           }
+          $("#map").height($(window).height());
           map.fitBounds(bounds);
+
         }
     };
 
