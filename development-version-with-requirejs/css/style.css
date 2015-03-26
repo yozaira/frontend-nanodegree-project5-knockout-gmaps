@@ -1,0 +1,586 @@
+body {
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+#map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+.spinner {
+  position: fixed;
+  top: 30%;
+  left: 30%;
+}
+
+
+.error-message {
+  width: 35%;
+  background-color: #fff;
+  font-size: 15px;
+  color: red;
+  border: 1px solid red;
+  position: fixed;
+  margin-right: 10%;
+  top: 20%;
+  left: 18%;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+
+.btn-use-geo {
+  background-color: #19A7E2;
+  font-size: 18px;
+  width: 100%;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+
+.btn-use-geo:hover {
+  background-color: #00B551;
+  color: #fff;
+}
+
+
+.btn-use-geo .glyphicon {
+  padding-right: 7px;
+}
+
+
+.locationBox {
+  margin-right: 30px;
+  width: 240px;
+  z-index: 100;
+  position: fixed;
+  bottom: 30px;
+  left: 20px;
+}
+
+
+.locationBoxTip {
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #FFFFFF;
+  margin-right: auto;
+  margin-left: 11px;
+  margin-bottom: 5px;
+}
+
+
+.searchLocation {
+  max-width: 240px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+
+.searchLocation label {
+  background-color: #fff;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #2D5BE3;
+  cursor: default;
+}
+
+
+.searchLocation .s-places {
+  margin-top: 12px;
+}
+
+
+.searchLocation .s-location {
+  margin-bottom: 5px;
+}
+
+
+.searchLocation .form-control {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #2D5BE3;
+  font-size: 15px;
+}
+
+
+.bntToggle {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  background-color: #00B551;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  padding-right: 20px;
+  padding-bottom: 7px;
+  margin: auto;
+}
+
+
+.bntToggle .glyphicon {
+  padding: 5px 20px 5px 10px;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+
+.toggle-setting {
+  text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
+}
+
+
+.bntToggle:hover {
+  background-color: #19A7E2;
+  color: #fff;
+}
+
+
+.placeSearch {
+  margin: 0px;
+  padding: 0px;
+  padding: 10px;
+  font-size: 15px;
+  line-height: 20px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+
+.placeSearch .form-control {
+  border: 1px solid #19A7E2;
+  font-size: 15px;
+}
+
+
+.placeSearch .form-control:focus,
+.searchLocation:focus .form-control:focus {
+border: 2px solid #74C7D5;
+}
+
+
+/* PlacesListBox styles */
+#PlacesListBox {
+  width: 300px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  border-radius: 6px;
+  z-index: 102;
+  position: absolute;
+  float: right;
+  overflow :hidden;
+  top: 15px;
+  right: 20px;
+  padding-bottom: 20px;
+  background-color: #FFFFFF;
+}
+
+
+.list-container {
+  height:400px;
+  overflow :hidden;
+}
+
+
+.placesList {
+  font-size: 13px;
+  list-style: none;
+  width: 300px; /* same as placesList */
+  height: 460px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+}
+
+
+.placesList::-webkit-scrollbar {
+  width: 10px;
+  overflow: visible;
+}
+
+
+.placesList::-webkit-scrollbar-thumb {
+  background-color: #00B551;
+  min-height: 28px;
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+}
+
+
+.placesList li {
+  border-top: 1px solid #e6e6e6;;
+  padding: 8px 20px 15px 20px;
+  color: #535353;
+  cursor: pointer;
+}
+
+
+.placesList li:hover {
+  background-color: #DEF1F5;
+}
+
+
+.placesList li:active {
+  background-color: #FFD180;
+}
+
+
+.collapse-list {
+  background-color: white;
+  width: 100%;
+  height: 35px;
+  text-align: center;
+  padding: 10px;
+  color: #9e9e9e;
+  border-top: 1px solid #ddd;
+  cursor: pointer;
+}
+
+
+.collapse-list .glyphicon {
+  font-size: 20px;
+  color: #40B3DF;
+}
+
+
+.PlacesListTitle {
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  text-align: center;
+  padding: 5px 10px 10px;
+  background: #00B551;
+  color: #fff;
+}
+
+
+.currentLocation {
+  font-size: 18px;
+  background-color: #19A7E2;
+  padding-top: 10px;
+  margin: 0px;
+  color: #fff;
+  text-align: center;
+}
+
+
+.currentLocation .glyphicon-map-marker {
+font-size: 30px;
+margin: 5px 5px auto 5px;
+}
+
+
+.no-result {
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+}
+
+
+/* venue list styles */
+.infowindow p,
+.placesList p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+
+.placesList .v-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #2D5BE3;
+}
+
+
+.placesList .v-category {
+  color: #00B551;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.placesList .v-address {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+
+.placesList .v-link {
+  color: #4272db;
+  text-decoration: none;
+}
+
+
+.placesList .tips {
+  margin-top: 15px;
+}
+
+
+.placesList .v-tip {
+  color: #00B551;
+  font-weight: bold;
+}
+
+
+/* Infowindow styles */
+.infowindow {
+  padding: 10px;
+  width: 200px;
+  font-size: 13px;
+}
+
+
+.infowindow .v-name {
+  font-weight: bold;
+  font-size: 15px;
+  color: #2D5BE3;
+}
+
+
+.infowindow .v-category {
+  font-size: 12px;
+  font-weight: bold;
+  color: #40B3DF;
+  color: #00B551;
+  margin-bottom: 7px;
+}
+
+
+.infowindow .v-address {
+  font-size: 11px;
+}
+
+
+.infowindow .v-rating-cont {
+  border-top: 1px solid #ccc;
+  margin-top: 7px;
+}
+
+
+.infowindow .v-rating-cont p {
+  margin-top: 5px;
+}
+
+
+.infowindow .v-rating {
+  width: 50px;
+  height: 50px;
+  border-radius:50px;
+  padding: 6px 5px;
+  background-color: #00B551;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 5px;
+  line-height: 20px;
+  vertical-align: bottom;
+}
+
+
+.infowindow .fs-icon {
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+
+.infowindow .rating-stars {
+  width: 70px;
+  padding-left: 8px;
+  margin-top: 10px;
+}
+
+
+.slider {
+  display: none;
+}
+
+
+@media screen and (min-width: 900px) and (max-width: 1000px)  {
+  .list-container {
+    height:270px;
+    overflow :hidden;
+  }
+
+}
+
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width: 240px) and (max-width: 768px) {
+
+  .error-message {
+    width: 50%;
+    margin-right: 10%;
+    top: 20%;
+    left: 25%;
+  }
+
+
+  #PlacesListBox {
+    display: none;
+  }
+
+
+  /* adjust accordng to slider position */
+  .locationBox {
+    bottom: 105px;
+  }
+
+
+  .animate {
+    transition: transform 0.3s ease-out;
+  }
+
+
+  .searchLocation label {
+    background-color: #fff;
+    margin: 13px auto 7px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2D5BE3;
+    cursor: default;
+  }
+
+
+  .searchLocation .form-control {
+    border: 1px solid #19A7E2;
+  }
+
+
+  .btn-use-geo {
+    background-color: #19A7E2;
+    font-size: 17px;
+    width: 100%;
+    color: #fff;
+    border: none;
+    margin-top: 5px;
+  }
+
+
+  .btn-use-geo .glyphicon {
+    padding-right: 7px;
+  }
+
+
+  .bntToggle {
+    font-size: 17px;
+  }
+
+
+  .slider {
+    display: block;
+    width: 90%;
+    height: 75px;
+    /*top:8px;*/
+    bottom: 15px;
+    left: 5px;
+    border:1px solid #19A7E2;
+    background-color: #fff;
+    overflow: hidden;
+    z-index: 103;
+    position: fixed;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    padding-left: 20px;
+  }
+
+
+  .holder {
+    list-style: none;
+    padding: 0px;
+    margin-top: 16px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+
+  .slide {
+    width: 90%;
+    height: 100%;
+    float: left;
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+    color: #535353;
+  }
+
+
+  .slide p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+
+  .holder .v-name {
+    text-align: left;
+    font-size: 17px;
+    font-weight: bold;
+    color: #2D5BE3;
+  }
+
+
+  .slider .glyphicon-chevron-right {
+    position: absolute;
+    right: 20px;
+    top: 40%;
+    font-size: 20px;
+    color: #2D5BE3;
+  }
+
+
+  .glyphicon-chevron-left {
+    position: absolute;
+    top: 40%;
+    left: 20px;
+    z-index: 99;
+    font-size: 20px;
+    color: #2D5BE3;
+  }
+
+
+  .no-result {
+    position: fixed;
+    bottom: 45px;
+    top: initial;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    color: #9E9E9E;
+  }
+
+
+  .ms-touch.slider {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    /* Hides the scrollbar. */
+    -ms-scroll-chaining: none;
+    /* Prevents Metro from swiping to the next tab or app. */
+    -ms-scroll-snap-type: mandatory;
+    /* Forces a snap scroll behavior on your images. */
+    -ms-scroll-snap-points-x: snapInterval(0%, 100%);
+    /* Defines the y and x intervals to snap to when scrolling. */
+  }
+
+
+}

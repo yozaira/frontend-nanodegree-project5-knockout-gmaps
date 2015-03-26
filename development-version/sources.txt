@@ -1,0 +1,221 @@
+-----------------------------------------------------------------------------
+JS Tutorials & Articles
+------------------------------------------------------------------------------
+The JavaScript Behind Touch-Friendly Sliders
+From <https://css-tricks.com/the-javascript-behind-touch-friendly-sliders/>
+
+
+Understanding Design Patterns in JavaScript
+From <http://code.tutsplus.com/tutorials/understanding-design-patterns-in-javascript--net-25930>
+
+
+OOP In JavaScript: What You NEED to Know
+From <http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/>
+
+
+Simple JavaScript Inheritance
+From <http://ejohn.org/blog/simple-javascript-inheritance/>
+
+
+My Favorite JavaScript Design Pattern
+From <http://www.sitepoint.com/my-favorite-javascript-design-pattern/>
+
+
+JavaScript Patterns Collection
+From <http://shichuan.github.io/javascript-patterns/>
+
+
+JavaScript design patterns – Part 1: Singleton, composite, and façade
+From <http://www.adobe.com/devnet/archive/html5/articles/javascript-design-patterns-pt1-singleton-composite-facade.html>
+
+
+What is so bad about singletons?
+From <http://stackoverflow.com/questions/137975/what-is-so-bad-about-singletons>
+
+
+Javascript module pattern: When to use it and why
+From <http://briancray.com/posts/javascript-module-pattern>
+
+
+Mastering the Module Pattern
+From <http://toddmotto.com/mastering-the-module-pattern/>
+
+
+JavaScript Closures and the Module Pattern
+From <http://www.joezimjs.com/javascript/javascript-closures-and-the-module-pattern/>
+
+
+A fresh look at JavaScript Mixins
+From <https://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins/>
+
+
+JavaScript Module Pattern: In-Depth
+From <http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html>
+
+
+WHY I DON'T LOVE JAVASCRIPT'S MODULE PATTERN
+From <http://snook.ca/archives/javascript/no-love-for-module-pattern>
+
+
+Overwhelmed by JavaScript Dependencies
+From <http://blog.startifact.com/posts/overwhelmed-by-javascript-dependencies.html>
+
+
+Organizing your application using Modules (require.js)
+From <http://backbonetutorials.com/organizing-backbone-using-modules/>
+
+
+Javascript best practices - part 1
+From <http://www.thinkful.com/learn/javascript-best-practices-1/>
+http://www.thinkful.com/learn/javascript-best-practices-2/#Development-Code-is-Not-Live-Code
+
+
+JavaScript Closures and the Module Pattern
+From <http://www.joezimjs.com/javascript/javascript-closures-and-the-module-pattern/>
+
+
+Writing Fast, Memory-Efficient JavaScript
+From <http://www.smashingmagazine.com/2012/11/05/writing-fast-memory-efficient-javascript/>
+
+
+----------------------------------------------------------------------------
+Foursquare API
+----------------------------------------------------------------------------
+The Foursquare API
+From <https://developer.foursquare.com/overview/>
+
+
+Find great places on the go.
+From <https://foursquare.com/about/logos>
+
+
+----------------------------------------------------------------------------
+Tools
+----------------------------------------------------------------------------
+
+Knockout JS:
+--------------------------------
+KnockoutJs Documentation
+http://knockoutjs.com/documentation/introduction.html
+
+The Top 10 Mistakes That KnockoutJS Developers Make
+From <https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs>
+
+
+Knockout.js tips and tricks
+From <http://tech.pro/tutorial/1559/knockoutjs-tips-and-tricks>
+
+
+All of the KnockoutJS.com Live Samples in jsFiddle
+From <http://www.knockmeout.net/2011/08/all-of-knockoutjscom-live-samples-in.html>
+
+
+Implementing MVVM Pattern in Web Applications Using Knockout
+From <http://www.codeguru.com/csharp/implementing-mvvm-pattern-in-web-applications-using-knockout.html>
+
+
+Knockout.js pro tips – working with observable arrays
+From <http://www.strathweb.com/2012/07/knockout-js-pro-tips-working-with-observable-arrays/>
+
+
+Utility Functions in KnockoutJS
+From <http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html>
+
+
+Working with Typed Arrays in Knockout.js
+From <http://tech.pro/tutorial/1417/working-with-typed-arrays-in-knockoutjs>
+
+
+Into the Ring with Knockout.js
+From <http://code.tutsplus.com/series/into-the-ring-with-knockoutjs--net-22038>
+
+
+Building Large, Maintainable, and Testable Knockout.js Applications
+From <http://code.tutsplus.com/tutorials/building-large-maintainable-and-testable-knockoutjs-applications--net-30996>
+
+
+Fallback Images with Knockout
+From <http://blog.greatrexpectations.com/2013/03/20/fallback-images-with-knockout/>
+
+
+
+Bower JS:
+--------------------------------
+Bower Documentation
+http://bower.io/
+
+What’s So Great About Bower?
+From <https://css-tricks.com/whats-great-bower/>
+
+
+Managing Frontend Dependencies & Deployment Part 1: Bower
+From <https://blog.engineyard.com/2014/frontend-dependencies-management-part-1>
+
+
+
+RequireJS:
+--------------------------------
+
+RequireJS Documentation
+http://requirejs.org/
+
+
+Asynchronous Module Definition (AMD) With RequireJs
+From <http://knockoutjs.com/documentation/amd-loading.html>
+
+Getting Started with RequireJS and AMD
+https://blog.safaribooksonline.com/2013/09/26/getting-started-with-requirejs-and-amd/
+
+
+Using r.js to Optimize Your RequireJS Project
+From <http://tech.pro/blog/1639/using-rjs-to-optimize-your-requirejs-project>
+
+
+r.js/build/example.build.js
+From <https://github.com/jrburke/r.js/blob/master/build/example.build.js>
+
+
+
+
+HTML5 Geolocation & Google Maps
+-------------------------------------
+
+Using HTML5 Geolocation to show current location with Google Maps API
+From <http://toddmotto.com/using-html5-geolocation-to-show-current-location-with-google-maps-api/>
+
+
+Google Maps Javascript API v3
+https://developers.google.com/maps/documentation/javascript/tutorial
+
+Reverse Geocoding (Address Lookup)
+https://developers.google.com/maps/documentation/javascript/geocoding#ReverseGeocoding>
+
+
+Center Google Maps (V3) on browser resize (responsive)
+From <http://stackoverflow.com/questions/8792676/center-google-maps-v3-on-browser-resize-responsive>
+
+
+Google API v3 fit map zoom and bounds to all markers
+From <http://grapsus.net/blog/post/Google-API-v3-fit-map-zoom-and-bounds-to-all-markers>
+
+
+Google Maps v3 getBoundsZoomLevel - JSFiddle
+From <https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=google+maps+bounds+extend>
+
+
+Zoom To Fit All Markers on Google Maps API v3
+From <http://blog.shamess.info/2009/09/29/zoom-to-fit-all-markers-on-google-maps-api-v3/>
+
+
+google-maps-utility-library-v3
+From <https://code.google.com/p/google-maps-utility-library-v3/wiki/Libraries>
+
+
+
+
+
+
+
+
+
+

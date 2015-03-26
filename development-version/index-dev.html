@@ -1,0 +1,120 @@
+<!DOCTYPE html><!-- Use this file for development and testing -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Comatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Find Foursquare Popular Places</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <!-- show loader gif when requesting data -->
+    <div class="spinner">
+      <img id="spinner" src="images/spinner.gif" alt="Loading"/>
+    </div>
+    <!-- display error messages -->
+    <div data-bind="text: errorMessage, css: errorClass"></div>
+
+    <!-- container positioned down left on the app. Here the user
+    can search for a specific location, a city, his/her geolocation
+    or a specific place (on small screens) -->
+    <div class="locationBox">
+      <div class="locationBar">
+        <div class="searchLocation">
+          <!-- find places near user geolocation"-->
+          <button data-bind="click: getUserGeolocation" class="btn-use-geo">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>Find places near me
+          </button>
+          <!-- places search field - visible only on small screens-->
+          <input data-bind="textInput: keywordToSearch" class="s-places visible-xs form-control input-md" type="text" placeholder="Search places... like bars">
+          <!-- search city or location input. Observable neighborhood has a default value-->
+          <label>Search city or Location</label>
+          <input data-bind="textInput: neighborhood" class="s-location form-control input-md" type="text">
+
+        </div>
+        <!-- css pointer similar to google infowindow appended to location box-->
+        <div class="locationBoxTip"></div>
+      </div>
+      <!-- hide or show location box -->
+      <button data-bind="click: toggleLocationSearch" class="bntToggle">
+        <span class="glyphicon glyphicon-globe"></span>
+        <span class="toggle-setting">Hide Search Bar</span>
+      </button>
+    </div>
+    <!-- box to display places info on big screens-->
+    <div id="PlacesListBox">
+      <div class="PlacesListTitle">
+        <h2>Popular Places</h2>
+      </div>
+      <!-- places search field-->
+      <div class="placeSearch">
+        <input data-bind="textInput: keywordToSearch"  class="form-control input-md" type="text" placeholder="Search places... like bars">
+      </div>
+
+      <div data-bind="visible: showList">
+        <!-- if any place retrieved, show current location entered on input field-->
+        <div class="currentLocation">
+          <span data-bind="if: filteredPlacesList().length">
+            <!-- <h4>Current Location</h4> -->
+            <p class="glyphicon glyphicon-map-marker" aria-hidden="true"></p>
+            <p data-bind="text: neighborhood"></p>
+          </span>
+          <p class="no-result" data-bind="ifnot: filteredPlacesList().length">No Result Found</p>
+        </div>
+
+        <div class="list-container">
+          <!-- diplay retrieved data -->
+          <div data-bind="foreach: filteredPlacesList" class="placesList">
+            <!-- when click on any venue on the list, open the map marker with same venue -->
+            <li data-bind="click: $root.clickMarker">
+              <p><span data-bind="text: venue.name" class="v-name"></span></p>
+              <p class="v-category"><span data-bind="text: venue.categories[0].name"></span></p>
+              <p class="v-address">
+                <span data-bind="text: venue.location.formattedAddress[0]"></span> -
+                <span data-bind="text: venue.location.formattedAddress[1]"></span>
+              </p>
+
+              <div class="tips">
+                <p class="v-tip">Tips: </p>
+                <span data-bind="if: $data.tips">
+                  <p data-bind="text: tips[0].text "></p>
+                <span data-bind="ifnot: $data.tips"><em>no tips available.</em></span>
+              </div>
+            </li>
+          </div>
+        </div><!-- /end list-container -->
+        <!-- toggle places list -->
+        <div data-bind="click: togglePlacesList" class="collapse-list">
+          <span id="collapse-btn" class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+        </div>
+      </div> <!-- /end showlist -->
+    </div><!-- /end placesList-->
+
+    <!-- mobile slider -->
+    <div class="slider">
+      <ul class="holder" data-bind="foreach: filteredPlacesList">
+        <li class="slide" data-bind="click: $root.clickMarker">
+          <p><span data-bind="text: venue.name" class="v-name"></span></p>
+          <p ><span data-bind="text: venue.categories[0].name" class="v-category"></span></p>
+        </li>
+      </ul>
+        <span data-bind="visible: rightArrowTouch" class="glyphicon glyphicon-chevron-right"></span>
+        <span data-bind="visible: leftArrowTouch" class="glyphicon glyphicon-chevron-left"></span>
+      <span class="no-result" data-bind="visible: !filteredPlacesList().length">No Result Found</span>
+    </div>
+    <!-- google maps lib-->
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <!-- js fiels -->
+    <script src="scripts/vendor/knockoutjs/dist/knockout.js"></script>
+    <script src="scripts/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="scripts/vendor/infobubble.min.js"></script>
+    <script src="scripts/app/api-lib.js"></script>
+    <script src="scripts/app/map-options.js"></script>
+    <script src="scripts/app/mapViewModel.js"></script>
+  </body>
+</html>

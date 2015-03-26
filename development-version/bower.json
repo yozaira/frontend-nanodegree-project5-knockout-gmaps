@@ -1,0 +1,8 @@
+{
+  "name": "ud-nd-ko-gmaps-fs-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "knockoutjs": "latest",
+    "jquery": "latest"
+  }
+}
