@@ -14,7 +14,7 @@ var watch = require('gulp-watch');
 
 // copy and paste dependancies installation
 /*
- npm install gulp-concat gulp-uglify gulp-rename gulp-minify-css gulp-minify-html gulp-strip-debug gulp-watch --save-dev
+ npm install gulp-concat gulp-uglify gulp-rename gulp-minify-css gulp-order gulp-minify-html gulp-strip-debug gulp-watch --save-dev
 */
 
 
@@ -27,7 +27,6 @@ module wont work.
 var order = require("gulp-order");
 
 gulp.task('app-js', function() {
-
   return gulp.src('scripts/app/*.js')
         .pipe(order([
                     'scripts/app/api-lib.js',
@@ -36,8 +35,8 @@ gulp.task('app-js', function() {
                     ],{base: './'} ))
         .pipe(stripDebug())
         .pipe(concat('app-scripts.js'))
-        .pipe(rename('app-scripts.min.js'))
         .pipe(uglify())
+        .pipe(rename('app-scripts.min.js'))
         .pipe(gulp.dest('../build/js/'));
 });
 
