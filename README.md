@@ -49,7 +49,7 @@ operated primarily through interacting with the map markers. There are two ways 
    for tablets and smart phones).
 
 A live version of this website is available
-at <a href="http://yozaira.github.io/frontend-nanodegree-project5-ko-gmaps">Neighborhood Map Project</a>.
+at <a href="http://yozaira.github.io/frontend-nanodegree-project5-knockout-gmaps">Neighborhood Map Project</a>.
 This is the production version; however, its functionality should be synchronized with the development version
 at all times.
 
