@@ -32,11 +32,12 @@ Other tools used to create this app:
 
 The files are organized in the following way:
 
-* scripts folder - contains vendor & app subfolders for js files.
-* css folder - for style files.
+* build folder - contains compressed js and css files.
 * images folder - containing the images.
-* index-prod.html - tailored to production: includes paths to compressed files on build directory.
-* index-dev.html - tailored to development and testing: includes paths to uncomplied files of the app.
+* index.html - compressed version of development-version/index.html. Includes paths to complied files on build dir.
+* development-version - The develoment version of the app.
+* development version-with-requirejs - A dev version of the app created using RequireJS, an AMD module loader.
+
 
 ### How to use
 If you are familiar with Google Maps, you will find this application fairly simple to use.
@@ -49,8 +50,21 @@ operated primarily through interacting with the map markers. There are two ways 
    for tablets and smart phones).
 
 A live version of this website is available
-at <b><a href="http://yozaira.github.io/frontend-nanodegree-project5-knockout-gmaps">Neighborhood Map Project</a></b>.
+at <a href="http://yozaira.github.io/frontend-nanodegree-project5-knockout-gmaps">Neighborhood Map Project</a>.
 This is the production version; however, its functionality should be synchronized with the development version
 at all times.
 
+
+### Optional future improvements:
+Fine tune the city search.  When user looks for a city, in addition to the requested city, the Geocoder Service will
+will output other places in different countries with the same name or, in some cases, when the name is included on the address.  As a result, Google Maps Bounds will adjust the map level zoom to keep all the places visible on the map. For example, a search for 'buenos aires' will output the capital city of Argentina in addition to a location in Mexico.
+My guess is that this behavior is related to the use of Foursquare API as location data. For future tests, I will use Google Places API and other API data instead, to see if the behavior is different.
+
+
+### Final Result:
+
+![Page Speed on Desktops](development-version/app-images/gmapp-desktop.png)
+![Page Speed on Desktops](development-version/app-images/gmapp-tablet.png)
+![Page Speed on Desktops](development-version/app-images/gmapp-ph.png)
+![Page Speed on Desktops](development-version/app-images/gmapp-ph2.png)
 
