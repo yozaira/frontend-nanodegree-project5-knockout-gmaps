@@ -1,21 +1,32 @@
 // include gulp
 var gulp = require('gulp');
 
-var stripDebug = require('gulp-strip-debug');
-// general plug-ings
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
 // js plug-ins
+var stripDebug = require('gulp-strip-debug');
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
 var uglify = require('gulp-uglify');
 // css plug-ins
 var minifyCSS = require('gulp-minify-css');
-
+// general plug-ings
+var concat = require('gulp-concat');
+var rename = require('gulp-rename');
 var watch = require('gulp-watch');
 
 // copy and paste dependancies installation
 /*
- npm install gulp-concat gulp-uglify gulp-rename gulp-minify-css gulp-order gulp-minify-html gulp-strip-debug gulp-watch --save-dev
+ npm install gulp-jshint jshint-stylish gulp-concat gulp-uglify gulp-rename gulp-minify-css gulp-order gulp-minify-html gulp-strip-debug gulp-watch --save-dev
 */
+
+
+gulp.task('lint', function() {
+   return gulp.src('scripts/app/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+    // If you want it to quit if it does find a problem,
+    // just add the fail reporter to the end of the task, like so:
+    // .pipe(jshint.reporter('fail'));
+});
 
 
 // JS strip debugging and minify vendor scripts files
@@ -58,8 +69,6 @@ gulp.task('lib-js', function() {
 });
 
 
-
-
 // CSS concat, auto-prefix and minify
 gulp.task('styles', function() {
   gulp.src(['css/*.css'])
@@ -74,7 +83,6 @@ gulp.task('styles', function() {
 
 // Minify html with minimize.
 // https://www.npmjs.com/package/gulp-minify-html
-// npm install --save-dev gulp-minify-html
 var minifyHTML = require('gulp-minify-html');
 
 gulp.task('min-html', function() {
@@ -95,16 +103,17 @@ gulp.task('min-html', function() {
 // src directory when a file change is made
 gulp.task('watch', function() {
 
+  gulp.watch('scripts/*.js', ['lint']);
   gulp.watch('scripts/*.js', ['lib-js']);
 	gulp.watch('scripts/app/*.js', ['app-js']);
-    // watch for CSS changes
+  // watch for CSS changes
 	gulp.watch('css/*.css', ['styles']);
 	// watch for HTML changes
 	gulp.watch('./*.html', ['min-html']);
 });
 
 // The default task (called when you run 'gulp' from cli)
-gulp.task('default', ['app-js', 'lib-js', 'styles', 'min-html', 'watch']);
+gulp.task('default', ['lint', 'app-js', 'lib-js', 'styles', 'min-html', 'watch']);
 
 
 
