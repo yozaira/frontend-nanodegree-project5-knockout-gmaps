@@ -1,5 +1,5 @@
 define(['knockout'], function(ko) {
-// 'use strict'
+  'use strict';
   /* main viewmodel class */
   return function MapViewModel() {
 
@@ -12,7 +12,7 @@ define(['knockout'], function(ko) {
     };
 
 
-    /**
+     /**
     * setting var self = this; at the top of every view model makes
     * it easier to track 'this'. This causes some messiness, but results
     * in easier to read code than passing 'this' everywhere, and also
@@ -58,9 +58,10 @@ define(['knockout'], function(ko) {
     self.rightArrowTouch = ko.observable(true);
 
 
-    /* initialize the map */
+     /* initialize the map */
     function initializeMap() {
       // library with map options
+      var mapOptions;
       mapOptions = mapLib.MAP_OPTIONS;
       map = new google.maps.Map(document.getElementById('map'), mapOptions);
       infowindow = new google.maps.InfoWindow();
@@ -69,18 +70,20 @@ define(['knockout'], function(ko) {
     * Initialize the app once the DOM and the Google Maps API is
     * successfully loaded. If not, display an error.
     */
-    if( typeof google === 'object'
-      && typeof google.maps === 'object'
-      && typeof google.maps.event === 'object'
-      && typeof google.maps.places === 'object') {
-
-        $('#spinner').hide();
-        google.maps.event.addDomListener(window, 'load', initializeMap() );
+    if(typeof google === 'object' && typeof google.maps === 'object' && typeof google.maps.event === 'object' && typeof google.maps.places === 'object') {
+      $('#spinner').hide();
+       google.maps.event.addDomListener(window, 'load', initializeMap() );
 
     } else {
-        console.log('The map could not be loaded. Please reload the page.');
         $('#spinner').show();
-        self.errorMessage('Can not load the map. Please reload the page.');
+        /**
+        * For some reason I dont understand, error function I created,
+        * doest not show when google map link on the view is deactivated.
+        * other than that, this function is doing its job. As an alternative,
+        * I output an alert message, which is also visible to the user.
+        */
+        alert('Error: There was a problem with Google Mpas. Please reload the page.');
+        self.errorMessage('The map could not be loaded. Please reload the page.');
         self.errorClass('error-message');
     }
 
@@ -91,7 +94,7 @@ define(['knockout'], function(ko) {
     * markers and  display the markers for the new requested location.
     */
     self.updateMarkers = ko.computed(function() {
-      if(self.neighborhood() != '') {
+      if(self.neighborhood() !== '') {
         if(self.venueMarkers().length > 0) {
           removeVenueMarkers();
         }
@@ -119,8 +122,10 @@ define(['knockout'], function(ko) {
     }
 
 
-    // remove markers of popular places from the map
-    // this method is called when neighborhood is newly defined
+    /**
+    * remove markers of popular places from the map
+    * this method is called when neighborhood is newly defined
+    */
     function removeVenueMarkers() {
       for (var i in self.venueMarkers()) {
         self.venueMarkers()[i].marker.setMap(null);
@@ -167,26 +172,6 @@ define(['knockout'], function(ko) {
 
 
 
-    /**
-    * this method is executed when the markers are updated
-    * (using updateMarkers method) upon user making a new
-    * search for a location in the neiborhood input.
-    */
-    function requestNeighborhood(neighborhood) {
-      var request = {
-        query: neighborhood
-      };
-      /* request neighborhood location data from PlaceService */
-      service = new google.maps.places.PlacesService(map);
-      service.textSearch(request,
-        function(results, status) {
-          if(status == google.maps.places.PlacesServiceStatus.OK) {
-            self.findFourSquerelocalityPlaces(map,'topPicks', results[0]);
-          }
-        }
-      );
-    }
-
 
 
     function requestGeolocation(neighborhood) {
@@ -202,7 +187,6 @@ define(['knockout'], function(ko) {
             // result[0] is the most approximate geolocation
             // console.log(results);
             // console.log(results[0]);
-
             /**
             * the geocode result[0] object is passed as neiborhood param
             *  in findFourSquerelocalityPlaces() method. At the same time,
@@ -289,7 +273,7 @@ define(['knockout'], function(ko) {
             function(place) {
               popularPlace = place.venue;
               // console.log(popularPlace);
-              createVenueMarkers(popularPlace)
+              createVenueMarkers(popularPlace);
             }
           );
           /**
@@ -315,7 +299,7 @@ define(['knockout'], function(ko) {
             * exception has been raised. This should result in a status code
             * of '500 Internal Server Error'.
             */
-            console.log(error.statusText);
+            // console.log(error.statusText);
             self.errorMessage('Foursquare servers are experiencing problems. Please, try again later.');
             self.errorClass('error-message');
           }
@@ -334,7 +318,6 @@ define(['knockout'], function(ko) {
     }; // end func
 
 
-
     self.getUserGeolocation = function() {
 
       if(navigator.geolocation) {
@@ -343,6 +326,7 @@ define(['knockout'], function(ko) {
             var longitude = position.coords.longitude;
             var userLocation = new google.maps.LatLng(latitude, longitude);
             // console.log(userLocation);
+            // Reverse Geocoding
             // https://developers.google.com/maps/documentation/javascript/geocoding#ReverseGeocoding
             geocoder = new google.maps.Geocoder();
             geocoder.geocode({'latLng': userLocation}, function(results, status) {
@@ -380,6 +364,7 @@ define(['knockout'], function(ko) {
     };
 
 
+
     /* html5 geolocation error handling */
     // http://www.codekhan.com/2012/01/how-to-handle-errors-that-we-get-while.html
     function handleNoGeolocation(error) {
@@ -406,7 +391,8 @@ define(['knockout'], function(ko) {
         self.errorMessage('Error: Your browser doesn\'t support geolocation.');
         self.errorClass('error-message');
       }
-    };
+    }
+
 
 
 
@@ -434,6 +420,7 @@ define(['knockout'], function(ko) {
           infowindow.open(map, marker);
       });
     };
+
 
 
     /* create map markers of popular places */
@@ -470,7 +457,7 @@ define(['knockout'], function(ko) {
         }
 
       /* content for infowindow */
-      var infoContent = '<div class="container infowindow">'
+      var infoContent = '<div class="infowindow">'
       + '<p><a href="'+ fsUrl +'" target="_blank">'
       + '<span class="v-name">' + name +'</span>'
       +'</a></p>'
@@ -668,7 +655,9 @@ define(['knockout'], function(ko) {
             // and fit the markers according to the space
             bounds.extend (self.venueMarkers()[i].marker.position);
           }
+          $("#map").height($(window).height());
           map.fitBounds(bounds);
+
         }
     };
 
@@ -805,6 +794,6 @@ define(['knockout'], function(ko) {
     },{ pure: true });
 
 
-  }; // end MapViewModel
+  } // end MapViewModel
 
 }); // end define
