@@ -19,8 +19,8 @@
       zoom: 14,
       zoomControl: true,
       zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL
-        ,position: google.maps.ControlPosition.TOP_LEFT
+        style: google.maps.ZoomControlStyle.SMALL,
+        position: google.maps.ControlPosition.TOP_LEFT
       },
       mapTypeControl: false,
       mapTypeControlOptions: {

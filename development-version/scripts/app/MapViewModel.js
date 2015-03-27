@@ -3,7 +3,7 @@
  * be applied in knockout view bindings once the dom is loaded.
  */
 (function($) {
-  'use strict'
+  'use strict';
 
   /* main viewmodel class */
   function MapViewModel() {
@@ -13,7 +13,7 @@
       this.name = name;
       this.category = category;
       this.position = position;
-    };
+    }
 
 
     /**
@@ -26,7 +26,6 @@
     var self = this;
     var map;
     var geocoder;
-    var service;
     var mapBounds;
     var infowindow;
     var mapInfoBubble;
@@ -66,7 +65,7 @@
     function initializeMap() {
       // library with map options
       var mapOptions;
-      var mapOptions = mapLib.MAP_OPTIONS;
+      mapOptions = mapLib.MAP_OPTIONS;
       map = new google.maps.Map(document.getElementById('map'), mapOptions);
       infowindow = new google.maps.InfoWindow();
     }
@@ -74,13 +73,9 @@
     * Initialize the app once the DOM and the Google Maps API is
     * successfully loaded. If not, display an error.
     */
-    if(  typeof google === 'object'
-      && typeof google.maps === 'object'
-      && typeof google.maps.event === 'object'
-      && typeof google.maps.places === 'object') {
-
-        $('#spinner').hide();
-        google.maps.event.addDomListener(window, 'load', initializeMap() );
+    if(typeof google === 'object' && typeof google.maps === 'object' && typeof google.maps.event === 'object' && typeof google.maps.places === 'object') {
+      $('#spinner').hide();
+       google.maps.event.addDomListener(window, 'load', initializeMap() );
 
     } else {
         $('#spinner').show();
@@ -102,7 +97,7 @@
     * markers and  display the markers for the new requested location.
     */
     self.updateMarkers = ko.computed(function() {
-      if(self.neighborhood() != '') {
+      if(self.neighborhood() !== '') {
         if(self.venueMarkers().length > 0) {
           removeVenueMarkers();
         }
@@ -177,28 +172,6 @@
          }
       }
     };
-
-
-
-    /**
-    * this method is executed when the markers are updated
-    * (using updateMarkers method) upon user making a new
-    * search for a location in the neiborhood input.
-    */
-    function requestNeighborhood(neighborhood) {
-      var request = {
-        query: neighborhood
-      };
-      /* request neighborhood location data from PlaceService */
-      service = new google.maps.places.PlacesService(map);
-      service.textSearch(request,
-        function(results, status) {
-          if(status == google.maps.places.PlacesServiceStatus.OK) {
-            self.findFourSquerelocalityPlaces(map,'topPicks', results[0]);
-          }
-        }
-      );
-    }
 
 
 
@@ -302,7 +275,7 @@
             function(place) {
               popularPlace = place.venue;
               // console.log(popularPlace);
-              createVenueMarkers(popularPlace)
+              createVenueMarkers(popularPlace);
             }
           );
           /**
@@ -328,7 +301,7 @@
             * exception has been raised. This should result in a status code
             * of '500 Internal Server Error'.
             */
-            console.log(error.statusText);
+            // console.log(error.statusText);
             self.errorMessage('Foursquare servers are experiencing problems. Please, try again later.');
             self.errorClass('error-message');
           }
@@ -419,7 +392,7 @@
         self.errorMessage('Error: Your browser doesn\'t support geolocation.');
         self.errorClass('error-message');
       }
-    };
+    }
 
 
 
@@ -483,7 +456,7 @@
         }
 
       /* content for infowindow */
-      var infoContent = '<div class="container infowindow">'
+      var infoContent = '<div class="infowindow">'
       + '<p><a href="'+ fsUrl +'" target="_blank">'
       + '<span class="v-name">' + name +'</span>'
       +'</a></p>'
@@ -606,7 +579,6 @@
     },{ pure: true });
 
 
-
     /**
      * this method shows or hides the list. this is done by
      * setting the list to visible in the knockout view as
@@ -686,7 +658,6 @@
 
         }
     };
-
 
 
     // swipeable list on mobile screens
@@ -797,7 +768,7 @@
           slider.init();
 
           // reset the slider when keyword is changed
-          if (keyword != '' || slideElems.length > 0) {
+          if (keyword !== '' || slideElems.length > 0) {
              slider.reset();
              self.leftArrowTouch(false);
           }
@@ -820,7 +791,7 @@
     },{ pure: true });
 
 
-  }; // end MapViewModel
+  } // end MapViewModel
 
   /* initialize the view model binding */
   ko.applyBindings(new MapViewModel());
